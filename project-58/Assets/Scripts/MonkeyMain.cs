@@ -31,10 +31,11 @@ public class MonkeyMain : MonoBehaviour
     private void Movement()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        
-        if(horizontal !=0)
+
+        if (horizontal != 0)
         {
-            playerRB.velocity = new Vector2(horizontal * runSpeed, playerRB.velocity.y);
+           playerRB.velocity = new Vector2(horizontal * runSpeed + playerRB.velocity.x  * Time.deltaTime, playerRB.velocity.y);
+            
         }
 
         if(Input.GetButton("Jump"))
