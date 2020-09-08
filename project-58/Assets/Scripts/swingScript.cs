@@ -12,11 +12,15 @@ public class swingScript : MonoBehaviour
     //Create Stuff
     private RaycastHit2D rayHit;
     private Vector3 targetLoc;
+    public static Vector2 myVector;
   
     //Serialized fields
     [SerializeField] private float maxDist = 1000f;
     [SerializeField] private LayerMask swingLayer;
     [SerializeField] private float step = 20f;
+
+    //Free variable
+    public static bool onRope; 
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,7 @@ public class swingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        onRope = distJoint.enabled;
         if(distJoint.distance > 0.1f && Input.GetMouseButton(0))
         {
             distJoint.distance -= step * Time.deltaTime;
@@ -51,6 +56,7 @@ public class swingScript : MonoBehaviour
                 line.enabled = true;
                 line.SetPosition(0, transform.position);
                 line.SetPosition(1, rayHit.point + 0.1f * (rayHit.point - new Vector2(transform.position.x, transform.position.y) ));
+                   
             }
 
         }
