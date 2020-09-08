@@ -14,7 +14,6 @@ public class MonkeyMain : MonoBehaviour
     [SerializeField] private float fallJumpMultiplier = 2.5f;
     [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private LayerMask platform;
-
     
 
     // Start is called before the first frame update
@@ -35,15 +34,8 @@ public class MonkeyMain : MonoBehaviour
 
         if (horizontal != 0)
         {
-            if (swingScript.onRope)
-            {
-                playerRB.velocity = new Vector2(horizontal * runSpeed + playerRB.velocity.x * Time.deltaTime, playerRB.velocity.y);
-
-            }
-            else
-            {
-                playerRB.velocity = new Vector2(horizontal * runSpeed + playerRB.velocity.x * Time.deltaTime, playerRB.velocity.y);
-            }
+           playerRB.velocity = new Vector2(horizontal * runSpeed + playerRB.velocity.x  * Time.deltaTime, playerRB.velocity.y);
+            
         }
 
         if(Input.GetButton("Jump"))
